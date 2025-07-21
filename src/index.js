@@ -1,7 +1,16 @@
 import "./styles.css";
-import { Dropdown } from "./dropdown";
+import { itemCarousel } from "./itemCarousel";
+import bimg from "./Bellion.jpg"
+import timg  from "./Test.jpeg"
 
-const container = document.querySelector(".container");
-const btn = document.querySelector(".btn");
 
-const myDropdown = new Dropdown(btn, container);
+const div = document.createElement("div")
+for(let i = 0; i < 3; i++){
+    const img = document.createElement("img")
+    img.src = bimg;
+    div.appendChild(img)
+}
+
+const test = new itemCarousel(div, {width : "300px", height : "500px"});
+document.body.appendChild(test.getElement())
+
