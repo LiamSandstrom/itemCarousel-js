@@ -33,7 +33,7 @@ npm install lim-carousel
 
 ### JavaScript
 ```bash
-import { itemCarousel } from '@liam/item-carousel';
+import itemCarousel from 'lim-carousel';
 
 const container = document.getElementById('my-carousel');
 
