@@ -43,7 +43,7 @@ const carousel = new itemCarousel(container, {
   showArrows: true,
   showDots: true,
   animationSpeed: 400,
-  autoPlay: true`
+  autoPlay: true,
   autoPlayInterval: 3000,
   loop: true
 });

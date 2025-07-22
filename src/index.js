@@ -93,6 +93,7 @@ export default class ItemCarousel {
 
   goToSlide(index) {
     if (index < 0 || index >= this.itemsLength()) return;
+    if (this.#options.autoPlay) this.clearAutoPlay();
 
     this.setIndex(index);
     this.#animateSlide(this.#getNextTranslate());
