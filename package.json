@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "dist/item-carousel.js",
   "module": "dist/item-carousel.js",
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.common.js",
@@ -11,7 +14,13 @@
     "devo": "webpack serve --open --config webpack.common.js",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
-  "keywords": ["carousel", "slider", "image", "autoplay", "loop"],
+  "keywords": [
+    "carousel",
+    "slider",
+    "image",
+    "autoplay",
+    "loop"
+  ],
   "author": "Liam Sandström",
   "license": "ISC",
   "description": "Lightweight image carousel with autoplay, looping, arrows, and dots.",
@@ -23,5 +32,8 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "lim-carousel": "^1.0.0"
   }
 }
