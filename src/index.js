@@ -11,6 +11,6 @@ for(let i = 0; i < 3; i++){
     div.appendChild(img)
 }
 
-const test = new itemCarousel(div, {width : "300px", height : "500px"});
+const test = new itemCarousel(div, {width : "300px", height : "500px", });
 document.body.appendChild(test.getElement())
 

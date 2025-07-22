@@ -32,8 +32,8 @@ export class itemCarousel {
     this.#assignContainers(width, height);
     this.#assignItems(container);
 
-    this.#addArrows();
-    this.#addDots();
+    if(showArrows) this.#addArrows();
+    if(showDots) this.#addDots();
     this.setStart();
   }
 
@@ -122,17 +122,19 @@ export class itemCarousel {
       dot.classList.add("dot");
       this.#dotContainer.appendChild(dot);
 
-      dot.addEventListener("click", () => this.goToSlide(i));
+      dot.addEventListener("click", () => this.setImage(i));
     }
     this.#outerContainer.appendChild(this.#dotContainer);
   }
 
   #selectDot() {
+    if(this.#dotContainer == null) return
     this.#dotContainer.children[this.#currIndex].style.backgroundColor =
       "white";
   }
 
   #deselectDot() {
+    if(this.#dotContainer == null) return
     this.#dotContainer.children[this.#currIndex].style.backgroundColor =
       "transparent";
   }
