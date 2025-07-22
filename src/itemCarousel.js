@@ -1,4 +1,4 @@
-export class itemCarousel {
+export default class ItemCarousel {
   #outerContainer;
   #innerContainer;
   #items = [];
@@ -6,6 +6,7 @@ export class itemCarousel {
   #animationSpeed;
   #dotContainer;
   #options;
+  #autoPlayTracker;
 
   static #leftArrowSVG =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDZMMTAgMTJMMTUgMTgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==";
@@ -21,19 +22,19 @@ export class itemCarousel {
       showArrows = true,
       showDots = true,
       autoPlay = false,
-      autoPlayInterval = 3000,
+      autoPlayInterval = 5000,
       loop = false,
     } = {}
   ) {
-
     this.#animationSpeed = animationSpeed;
     this.#options = { showArrows, showDots, autoPlay, autoPlayInterval, loop };
 
     this.#assignContainers(width, height);
     this.#assignItems(container);
 
-    if(showArrows) this.#addArrows();
-    if(showDots) this.#addDots();
+    if (this.#options.showArrows) this.#addArrows();
+    if (this.#options.showDots) this.#addDots();
+    if (this.#options.autoPlay) this.autoPlay();
     this.setStart();
   }
 
@@ -65,15 +66,27 @@ export class itemCarousel {
   }
 
   next() {
-    if (this.#currIndex >= this.itemsLength() - 1) return;
-    this.setIndex(this.#currIndex + 1);
-    this.#animateSlide(this.#getNextTranslate());
+    this.#moveToOffset(1);
   }
 
   previous() {
-    if (this.#currIndex === 0) return;
-    this.setIndex(this.#currIndex - 1);
-    this.#animateSlide(this.#getNextTranslate());
+    this.#moveToOffset(-1);
+  }
+
+  #moveToOffset(offset) {
+    const newIndex = this.#currIndex + offset;
+    const maxIndex = this.itemsLength() - 1;
+
+    if (newIndex < 0 || newIndex > maxIndex) {
+      if (!this.#options.loop) return;
+      const loopIndex = newIndex < 0 ? maxIndex : 0;
+      this.goToSlide(loopIndex);
+    } else {
+      this.setIndex(newIndex);
+      this.#animateSlide(this.#getNextTranslate());
+    }
+
+    if (this.#options.autoPlay) this.clearAutoPlay();
   }
 
   goToSlide(index) {
@@ -81,6 +94,19 @@ export class itemCarousel {
 
     this.setIndex(index);
     this.#animateSlide(this.#getNextTranslate());
+  }
+
+  autoPlay() {
+    this.#autoPlayTracker = setTimeout(
+      this.next.bind(this),
+      this.#options.autoPlayInterval
+    );
+  }
+
+  clearAutoPlay() {
+    if (!this.#options.autoPlay) return;
+    clearTimeout(this.#autoPlayTracker);
+    this.autoPlay();
   }
 
   #animateSlide(newTransform) {
@@ -99,13 +125,13 @@ export class itemCarousel {
 
   #addArrows() {
     const leftArrow = document.createElement("img");
-    leftArrow.src = itemCarousel.#leftArrowSVG;
+    leftArrow.src = ItemCarousel.#leftArrowSVG;
     leftArrow.classList.add("arrow");
     leftArrow.classList.add("leftArrow");
     this.#outerContainer.appendChild(leftArrow);
 
     const rightArrow = document.createElement("img");
-    rightArrow.src = itemCarousel.#rightArrowSVG;
+    rightArrow.src = ItemCarousel.#rightArrowSVG;
     rightArrow.classList.add("arrow");
     rightArrow.classList.add("rightArrow");
     this.#outerContainer.appendChild(rightArrow);
@@ -128,13 +154,13 @@ export class itemCarousel {
   }
 
   #selectDot() {
-    if(this.#dotContainer == null) return
+    if (this.#options.showDots != true) return;
     this.#dotContainer.children[this.#currIndex].style.backgroundColor =
       "white";
   }
 
   #deselectDot() {
-    if(this.#dotContainer == null) return
+    if (this.#options.showDots != true) return;
     this.#dotContainer.children[this.#currIndex].style.backgroundColor =
       "transparent";
   }
@@ -150,7 +176,7 @@ export class itemCarousel {
   getElement = () => this.#outerContainer;
   getCurrentIndex = () => this.#currIndex;
 
-  destroy(){
+  destroy() {
     this.#outerContainer?.remove();
   }
 }

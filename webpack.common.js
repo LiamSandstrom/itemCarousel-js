@@ -1,27 +1,23 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "./dist"),
-    clean: true,
+    path: path.resolve(__dirname, "dist"),
+    filename: "item-carousel.js",
+    library: {
+      name: "itemCarousel",
+      type: "umd",
+      export: "default",
+    },
+    globalObject: "this",
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
-  ],
+  mode: "production",
   module: {
     rules: [
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
       },
     ],
   },

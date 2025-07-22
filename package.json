@@ -1,26 +1,20 @@
 {
-  "name": "webpack-template",
+  "name": "lim-carousel",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/item-carousel.js",
+  "module": "dist/item-carousel.js",
+  "files": ["dist", "README.md"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.js",
-    "dev": "webpack serve --config webpack.dev.js",
-    "devo": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.common.js",
+    "dev": "webpack serve --config webpack.common.js",
+    "devo": "webpack serve --open --config webpack.common.js",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LiamSandstrom/webpack-template.git"
-  },
-  "keywords": [],
-  "author": "",
+  "keywords": ["carousel", "slider", "image", "autoplay", "loop"],
+  "author": "Liam Sandström",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LiamSandstrom/webpack-template/issues"
-  },
-  "homepage": "https://github.com/LiamSandstrom/webpack-template#readme",
-  "description": "",
+  "description": "Lightweight image carousel with autoplay, looping, arrows, and dots.",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
