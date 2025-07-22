@@ -122,7 +122,7 @@ export class itemCarousel {
       dot.classList.add("dot");
       this.#dotContainer.appendChild(dot);
 
-      dot.addEventListener("click", () => this.setImage(i));
+      dot.addEventListener("click", () => this.goToSlide(i));
     }
     this.#outerContainer.appendChild(this.#dotContainer);
   }
