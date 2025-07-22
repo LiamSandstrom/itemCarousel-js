@@ -15,7 +15,7 @@ A lightweight, customizable, JavaScript carousel for sliding items or images. Bu
 ## Installation
 
 ```bash
-npm install @liam/item-carousel
+npm install lim-carousel
 ```
 
 ## Usage
