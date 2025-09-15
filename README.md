@@ -1,7 +1,7 @@
 # lim-carousel
 
 A lightweight, customizable, JavaScript carousel for sliding items or images. Built with performance and simplicity in mind.
-Made with Webpack. Can be used directly in the browser via the UMD/ESM build, but works easiest when imported through a bundler.
+Made with Webpack and needs a bundler to work! Otherwise code is accessible at the github link below! 
 
 [GitHub Repo] https://github.com/LiamSandstrom/itemCarousel-js
 
