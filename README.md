@@ -1,6 +1,7 @@
 # lim-carousel
 
 A lightweight, customizable, JavaScript carousel for sliding items or images. Built with performance and simplicity in mind.
+Made with Webpack. Can be used directly in the browser via the UMD/ESM build, but works easiest when imported through a bundler.
 
 [GitHub Repo] https://github.com/LiamSandstrom/itemCarousel-js
 
@@ -24,7 +25,7 @@ npm install lim-carousel
 
 ### HTML
 
-```bash 
+```bash
 <div id="my-carousel">
   <img src="1.jpg" />
   <img src="2.jpg" />
@@ -32,8 +33,8 @@ npm install lim-carousel
 </div>
 ```
 
-
 ### JavaScript
+
 ```bash
 import itemCarousel from 'lim-carousel';
 
@@ -52,62 +53,71 @@ const carousel = new itemCarousel(container, {
 
 document.body.appendChild(carousel.getElement());
 ```
-## Options 
+
+## Options
 
 These are the available configuration options you can pass into the `itemCarousel` constructor:
 
 ---
 
-### width  
+### width
+
 **Type:** `String`  
 **Default:** `"400px"`  
 **Description:** Width of the carousel container.
 
 ---
 
-### height  
+### height
+
 **Type:** `String`  
 **Default:** `"400px"`  
 **Description:** Height of the carousel container.
 
 ---
 
-### animationSpeed  
+### animationSpeed
+
 **Type:** `Number`  
 **Default:** `400`  
 **Description:** Duration of the transition between slides, in milliseconds.
 
 ---
 
-### showArrows  
+### showArrows
+
 **Type:** `Boolean`  
 **Default:** `true`  
 **Description:** Whether to show left/right navigation arrows.
 
 ---
 
-### showDots  
+### showDots
+
 **Type:** `Boolean`  
 **Default:** `true`  
 **Description:** Whether to display dot indicators for each slide.
 
 ---
 
-### autoPlay  
+### autoPlay
+
 **Type:** `Boolean`  
 **Default:** `false`  
 **Description:** Automatically cycle through slides at a set interval.
 
 ---
 
-### autoPlayInterval  
+### autoPlayInterval
+
 **Type:** `Number`  
 **Default:** `5000`  
 **Description:** Time (in milliseconds) between autoPlay transitions.
 
 ---
 
-### loop  
+### loop
+
 **Type:** `Boolean`  
 **Default:** `false`  
 **Description:** Whether the carousel should loop back to the beginning or end when navigation hits the boundary.
