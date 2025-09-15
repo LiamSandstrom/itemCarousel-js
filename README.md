@@ -2,6 +2,8 @@
 
 A lightweight, customizable, JavaScript carousel for sliding items or images. Built with performance and simplicity in mind.
 
+[GitHub Repo] https://github.com/LiamSandstrom/itemCarousel-js
+
 ## Features
 
 - Arrows and dot indicators (toggleable)
