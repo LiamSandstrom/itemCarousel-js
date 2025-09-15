@@ -1,6 +1,6 @@
 {
   "name": "lim-carousel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/item-carousel.js",
   "module": "dist/item-carousel.js",
   "files": [
